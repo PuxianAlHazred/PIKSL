@@ -78,7 +78,7 @@ export default {
   }),
   methods: {
     appear() {
-      var t1 = this.$gsap.timeline(), mySplitText = new SplitText(".menu-span", {type:"words,chars"}), chars = mySplitText.chars;
+      var t1 = this.$gsap.timeline(), mySplitText = new SplitType(".menu-span", {type:"words,chars"}), chars = mySplitText.chars;
         t1.from(chars, {delay: 3, duration: 1, opacity:0, y:50, transformOrigin:"0% 50% 100",  ease:"back", stagger: 0.1}, "+=0");
     },
     beforeEnter(el) {

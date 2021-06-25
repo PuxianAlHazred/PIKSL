@@ -7,11 +7,94 @@
     <NuxtLink to="/">
       <svg class="svg-logo" view-box="0 0 100 100" width="100" height="100">
       </svg>
+      <svg class="svg-filter">
+        <defs>
+          <filter id="distord">
+            <feTurbulence id="anime2" baseFrequency="0.050" type="fractalNoise"/>
+            <feColorMatrix type="hueRotate" values="0">
+              <animate
+                attributeName="values"
+                from="0" to="360"
+                dur="6s"
+                repeatCount="indefinite"/>
+            </feColorMatrix>
+            <feDisplacementMap
+              in="SourceGraphic"
+              xChannelSelector="R"
+              yChannelSelector="B"
+              scale="10">
+              <animate
+                id="anime1"
+                attributeName="scale"
+                values="0"
+                dur="6s"
+                repeatCount="indefinite"/>
+              </feDisplacementMap>
+            <feGaussianBlur stdDeviation="0.1"/>
+            <feComponentTransfer result="main">
+              <feFuncA type="gamma" amplitude="150" exponent="5"/>
+            </feComponentTransfer>
+            <feColorMatrix type="matrix"
+                           values="0 0 0 0 0
+                                   0 0 0 0 0
+                                   0 0 1 0 1
+                                   0 0 0 0 0"/>
+            <feGaussianBlur stdDeviation="50"/>
+            <feComposite operator="over" in="main"/>
+          </filter>
+          <filter id="distorded">
+            <feTurbulence  baseFrequency="0.050" type="fractalNoise"/>
+            <feColorMatrix type="hueRotate" values="0">
+              <animate
+                attributeName="values"
+                from="0" to="360"
+                dur="10s"
+                repeatCount="indefinite"/>
+            </feColorMatrix>
+            <feDisplacementMap
+              in="SourceGraphic"
+              xChannelSelector="R"
+              yChannelSelector="B"
+              scale="50" >
+              <animate
+
+                attributeName="scale"
+                values="50"
+                dur="10s"
+
+                repeatCount="indefinite"/>
+              </feDisplacementMap>
+            <feGaussianBlur stdDeviation="0"/>
+            <feComponentTransfer result="main">
+              <feFuncA type="gamma" amplitude="150" exponent="5"/>
+            </feComponentTransfer>
+            <feColorMatrix type="matrix"
+                           values="0 0 0 0 0
+                                   0 0 0 0 0
+                                   0 0 1 0 1
+                                   0 0 0 0 0"/>
+            <feGaussianBlur stdDeviation="0"/>
+            <feComposite operator="over" in="main"/>
+          </filter>
+          <filter id="pixelate">
+            <feGaussianBlur stdDeviation="2" in="SourceGraphic" result="smoothed" />
+            <feImage width="5" height="5" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAIAAAACDbGyAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAWSURBVAgdY1ywgOEDAwKxgJhIgFQ+AP/vCNK2s+8LAAAAAElFTkSuQmCC" result="displacement-map" />
+            <feTile in="displacement-map" result="pixelate-map" />
+            <feDisplacementMap in="smoothed" in2="pixelate-map" xChannelSelector="R" yChannelSelector="G" scale="50" result="pre-final"/>
+            <feComposite operator="in" in2="SourceGraphic"/>
+          </filter>
+        </defs>
+      </svg>
       <h1 class="title-logo">PIKSL</h1>
     </NuxtLink>
   </div>
 </template>
 <style scoped>
+  .svg-filter{
+    visibility:hidden;
+    width: 0px;
+    height: 0px;
+  }
   .logo {
     width: 100px;
     top: 50px;
@@ -60,7 +143,7 @@ export default {
   methods: {
     appear() {
       this.$gsap.from("#anime1",{ attr:{ values: '666' }, duration: 5, ease:'Power4.easeInOut'});
-      var t1 = this.$gsap.timeline(), mySplitText = new SplitText(".title-logo", {type:"words,chars"}), chars = mySplitText.chars;
+      var t1 = this.$gsap.timeline(), mySplitText = new SplitType(".title-logo", {type:"words,chars"}), chars = mySplitText.chars;
         t1.from(chars, {delay: 6.4, duration: 1, opacity:0, y:50, transformOrigin:"0% 50% 100",  ease:"back", stagger: 0.1}, "+=0");
         t1.to(".img-logo", {delay: 0.2, duration: 1, opacity:1});
     },
@@ -125,7 +208,7 @@ export default {
               point = Project(face[o]);
               str += ` L ${point.x + dx} ${-point.y + dy}`;
             }
-            str += ` Z" fill="rgba(255, 255, 255, 1)" stroke="rgba(0, 0, 0, 1)">`;
+            str += ` Z" fill="rgba(255, 255, 255, 1)"  stroke="rgba(0, 0, 0, 1)">`;
             container.innerHTML += str;
           }
         }}
@@ -184,12 +267,19 @@ export default {
         setTimeout(() => {
           mouse.down = false;
           requestAnimationFrame(Tick);
-        }, 100);
+        }, 500);
       });
       requestAnimationFrame(Tick);
     }
   },
+  created() {
+  },
   mounted() {
+    if(this.$store.state.preloading === false) {
+      console.log("IORE 1")
+    } else {
+      console.log("IORE 2")
+    }
     this.appear();
     this.hover();
     this.logo();

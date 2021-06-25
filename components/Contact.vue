@@ -31,7 +31,7 @@
 export default {
   methods: {
     appear() {
-      var t1 = this.$gsap.timeline(), mySplitText = new SplitText(".link-mail", {type:"words,chars"}), chars = mySplitText.chars;
+      var t1 = this.$gsap.timeline(), mySplitText = new SplitType(".link-mail", {type:"words,chars"}), chars = mySplitText.chars;
         t1.from(chars, {delay: 5, duration: 1, opacity:0, y:50, transformOrigin:"0% 50% 100",  ease:"back", stagger: 0.05}, "+=0");
         let contact = document.querySelector(".contact");
         contact.addEventListener("mouseenter", () => {

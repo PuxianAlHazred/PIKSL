@@ -1,12 +1,16 @@
 <template>
-  <transition name="loading_transition" appear v-on:before-appear="beforeEnter" v-on:appear="enter" v-on:after-appear="afterEnter">
+  <transition name="loading_transition"
+    v-on:before-enter="beforeEnter"
+    v-on:enter="enter"
+    v-on:after-enter="afterEnter"
+    v-on:before-leave="beforeLeave"
+    v-on:leave="leave"
+    v-on:after-leave="afterLeave"
+  >
     <div v-if="preloading" class="preloader" >
       <div v-if="content">
-
           <h1 class="titleload">PIKSL</h1>
-          <div class="preloader__progress">
-            <div class="preloader__progress__bar"></div>
-          </div>
+          <div class="preloader__progress"><div class="preloader__progress__bar"></div></div>
           <div class="preloader__items ">
             <ul>
               <li>[ -00%- premeditating protocols -\- ]</li>
@@ -37,16 +41,6 @@
   </transition>
 </template>
 <style>
-  .box-blanc{
-    width:300px;
-    height:300px;
-    background:white;
-    margin:0 auto;
-    position:fixed;
-    left:calc(50% - 150px);
-    top:calc(50% - 150px);
-    mix-blend-mode: difference;
-  }
   .preloader {
     align-items: center;
     background:#262626;
@@ -66,6 +60,28 @@
   .titleload{
     font-size:100px;
     font-family: 'Yeseva One', cursive;
+  }
+  .preloader__progress {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 5px;
+    overflow: hidden;
+    text-align: center;
+    width: 100%;
+
+  }
+  .preloader__progress__bar {
+    border-bottom: 5px solid black;
+    color: #FFFFFF;
+    height: 5px;
+    margin:0 auto;
+    width: 100%;
+        background:red;
+    animation: ani__06 5s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    transform-origin: 50% 0%;
   }
   .preloader__items{
     display: block;
@@ -96,27 +112,15 @@
     animation-fill-mode: forwards;
     animation-iteration-count: infinite;
   }
-  .preloader__progress {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 5px;
-    overflow: hidden;
-    text-align: center;
-    width: 100%;
-
-  }
-  .preloader__progress__bar {
-    border-bottom: 5px solid black;
-    color: #FFFFFF;
-    height: 5px;
+  .box-blanc{
+    width:300px;
+    height:300px;
+    background:white;
     margin:0 auto;
-    width: 100%;
-        background:red;
-    animation: ani__06 5s;
-    animation-fill-mode: forwards;
-    animation-iteration-count: 1;
-    transform-origin: 50% 0%;
+    position:fixed;
+    left:calc(50% - 150px);
+    top:calc(50% - 150px);
+    mix-blend-mode: difference;
   }
 </style>
 <script>
@@ -126,19 +130,17 @@ export default {
   }),
   methods: {
     start() {
-      this.toggle();
+      console.log("start")
+        this.toggle();
+        this.content = true; // Boolean du contenu = true
       // Début du chargement du component loading.vue
-      this.content = true; // Boolean du contenu = true
+
     },
     beforeEnter() {
-
-      // Avant de lancer la function Enter()
-    },
-    enter() {
-      var t1 = this.$gsap.timeline(), mySplitText = new SplitText(".titleload", {type:"words,chars"}), chars = mySplitText.chars;
+      console.log("beforeEnter")
+      var t1 = this.$gsap.timeline(), mySplitText = new SplitType(".titleload", {type:"words,chars"}), chars = mySplitText.chars;
         t1.from(chars, {delay: 1, duration: 0.5, opacity:0, y:-50, transformOrigin:"0% 50% 100",  ease:"power2.inOut", stagger: 0.2}, "+=0");
         t1.to(chars, {delay: 3, duration: 0.5, opacity:0, y:-50, transformOrigin:"0% 50% 100",  ease:"power2.inOut", stagger: 0.2}, "+=0");
-      // Animation de la liste
       this.$gsap.fromTo(".preloader__items",
         {opacity: 0, y: 15, ease: 'power2.inOut'},
         {opacity: 1, y: 0, delay: 1, ease: 'power2.inOut', duration: 0.5},
@@ -147,27 +149,38 @@ export default {
         {opacity: 0, height: 0, ease: 'power2.inOut'},
         {opacity: 1, height: 300, ease: 'power2.inOut', duration: 0.5},
       );
-      // Animation de la progress bar
       this.$gsap.fromTo(".preloader__progress__bar",
         {opacity: 0, y: -15, ease: 'power2.inOut'},
         {opacity: 1, y: 0, delay: 1, ease: 'power2.inOut', duration: 0.5},
       );
+      // Avant de lancer la function Enter()
+    },
+    enter() {
+      console.log("enter")
+
 
     },
     afterEnter() {
       // Aprés avoir lancer la function Enter()
-      this.$gsap.to(".box-blanc",
-        {delay: 5.6, opacity: 0, ease: 'power2.inOut', width: 0, x: 10, duration: 0.5},
-      );
-      this.$gsap.to(".preloader__items", { opacity: 0, y: 5, ease: 'power2.inOut', duration: 0.5, delay: 5 });
-      this.$gsap.to(".preloader__progress__bar", { opacity: 0, y: -5, ease: 'power2.inOut', duration: 0.5, delay: 5});
-
-
+      console.log("afterEnter")
+        this.$gsap.to(".box-blanc", {delay: 5.6, opacity: 0, ease: 'power2.inOut', width: 0, x: 10, duration: 0.5});
+        this.$gsap.to(".preloader__items", { opacity: 0, y: 5, ease: 'power2.inOut', duration: 0.5, delay: 5 });
+        this.$gsap.to(".preloader__progress__bar", { opacity: 0, y: -5, ease: 'power2.inOut', duration: 0.5, delay: 5});
     },
     finish() {
+      console.log("finish")
         this.content = false; // Boolean du contenu = false
         this.toggle();
       // Fin du chargement du component loading.vue
+    },
+    beforeLeave() {
+      console.log("beforeLeave")
+    },
+    leave() {
+      console.log("leave")
+    },
+    afterLeave() {
+      console.log("afterLeave")
     },
     toggle() {
         this.$store.dispatch('toggled')
