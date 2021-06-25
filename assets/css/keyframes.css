@@ -1,0 +1,186 @@
+/* Loading */
+@keyframes ani__05 {
+  0% {
+    transform: translateY(0);
+  }
+  5% {
+    transform: translateY(-20px);
+  }
+  10% {
+    transform: translateY(-40px);
+  }
+  15% {
+    transform: translateY(-60px);
+  }
+  20% {
+    transform: translateY(-80px);
+  }
+  25% {
+    transform: translateY(-100px);
+  }
+  30% {
+    transform: translateY(-120px);
+  }
+  40% {
+    transform: translateY(-140px);
+  }
+  45% {
+    transform: translateY(-160px);
+  }
+  50% {
+    transform: translateY(-180px);
+  }
+  55% {
+    transform: translateY(-200px);
+  }
+  60% {
+    transform: translateY(-220px);
+  }
+  65% {
+    transform: translateY(-240px);
+  }
+  70% {
+    transform: translateY(-260px);
+  }
+  75% {
+    transform: translateY(-280px);
+  }
+  80% {
+    transform: translateY(-300px);
+  }
+  85% {
+    transform: translateY(-320px);
+  }
+  90% {
+    transform: translateY(-340px);
+  }
+  95% {
+    transform: translateY(-360px);
+  }
+  100% {
+    transform: translateY(-380px);
+  }
+}
+@keyframes ani__06 {
+  0% {
+    border-color: #CCCCCC;
+    width: 0;
+  }
+  5% {
+    border-color: #CCCCCC;
+  }
+  10% {
+    border-color: #CCCCCC;
+  }
+  15% {
+    border-color: #CCCCCC;
+  }
+  20% {
+    border-color: #CCCCCC;
+  }
+  25% {
+    border-color: #CCCCCC;
+
+  }
+  30% {
+    border-color: #CCCCCC;
+
+  }
+  35% {
+    border-color: #CCCCCC;
+  }
+  40% {
+    border-color: #CCCCCC;
+  }
+  45% {
+    border-color: #CCCCCC;
+  }
+  50% {
+    border-color: #CCCCCC;
+    width: 150px;
+  }
+  55% {
+    width: 0;
+    border-color: #FFFFFF;
+  }
+  60% {
+    border-color: #FFFFFF;
+  }
+  65% {
+    border-color: #FFFFFF;
+  }
+  70% {
+    border-color: #FFFFFF;
+  }
+  75% {
+    border-color: #FFFFFF;
+  }
+  80% {
+    border-color: #FFFFFF;
+  }
+  85% {
+    border-color: #FFFFFF;
+  }
+  90% {
+    border-color: #FFFFFF;
+  }
+  95% {
+    border-color: #FFFFFF;
+  }
+  100% {
+    border-color: #FFFFFF;
+    width: 300px;
+  }
+}
+/* Others */
+@keyframes pop-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-15px) scale(.8);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes grain {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  10% {
+    transform: translate3d(-5%, -10%, 0);
+  }
+  20% {
+    transform: translate3d(-15%, 5%, 0);
+  }
+  30% {
+    transform: translate3d(7%, -25%, 0);
+  }
+  40% {
+    transform: translate3d(-5%, 25%, 0);
+  }
+  50% {
+    transform: translate3d(-15%, 10%, 0);
+  }
+  60% {
+    transform: translate3d(15%, 0%, 0);
+  }
+  70% {
+    transform: translate3d(0%, 15%, 0);
+  }
+  80% {
+    transform: translate3d(3%, 35%, 0);
+  }
+  90% {
+    transform: translate3d(-10%, 10%, 0);
+  }
+}

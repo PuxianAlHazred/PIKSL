@@ -1,0 +1,177 @@
+/* ALL : SIMPLE OPACITY*/
+.fade-enter-active, .fade-leave-active { transition: opacity .5s; }
+.fade-enter, .fade-leave-active { opacity: 0; }
+
+/* Page : SPLIT*/
+.page_transition-leave-active,
+.page_transition-enter-active {
+  transition-duration: 1600ms;
+  z-index: 1010!important;
+
+}
+.page_transition-leave-active::before,
+.page_transition-leave-active::after,
+.page_transition-enter-active::before,
+.page_transition-enter-active::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  height: 50%;
+
+  transition-property: opacity, transform;
+  transition-timing-function: ease-in-out;
+}
+.page_transition-leave-active::before,
+.page_transition-enter-active::before {
+  background-color: #262626;
+
+}
+.page_transition-leave-active::after,
+.page_transition-enter-active::after {
+  top: 50%;
+  background-color: #262626;
+}
+.page_transition-enter::before,
+.page_transition-enter::after {
+  transform: scaleX(0);
+}
+.page_transition-enter-active::before {
+  transition-duration: 800ms;
+}
+.page_transition-enter-active::after {
+  transition-duration: 500ms;
+  transition-delay: 300ms;
+}
+.page_transition-enter-to::before,
+.page_transition-enter-to::after {
+  transform: scale(1);
+  transform-origin: left;
+
+}
+.page_transition-leave::before,
+.page_transition-leave::after {
+  transform: scaleX(1);
+}
+.page_transition-leave-active::before {
+  transition-duration: 800ms;
+}
+.page_transition-leave-active::after {
+  transition-duration: 500ms;
+  transition-delay: 300ms;
+}
+.page_transition-leave-to::before,
+.page_transition-leave-to::after {
+  transform: scaleX(0);
+  transform-origin: right;
+}
+
+/* Component : SPLIT*/
+.component_transition-enter-active,
+.component_transition-leave-active {
+  transition-duration: 1600ms;
+}
+.component_transition-enter-active::before,
+.component_transition-enter-active::after,
+.component_transition-leave-active::before,
+.component_transition-leave-active::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  height: 50%;
+  transition-property: opacity, transform;
+  transition-timing-function: ease-in-out;
+}
+.component_transition-enter-active::before,
+.component_transition-leave-active::before {
+  background-color: #2e2e2e;
+}
+.component_transition-enter-active::after,
+.component_transition-leave-active::after {
+  top: 50%;
+  background-color: #2e2e2e;
+}
+.component_transition-leave::before,
+.component_transition-leave::after {
+  transform: scaleX(0);
+}
+.component_transition-leave-active::before {
+  transition-duration: 800ms;
+}
+.component_transition-leave-active::after {
+  transition-duration: 500ms;
+  transition-delay: 300ms;
+}
+.component_transition-leave-to::before,
+.component_transition-leave-to::after {
+  transform: scale(1);
+  transform-origin: left;
+}
+.component_transition-enter::before,
+.component_transition-enter::after {
+  transform: scaleX(1);
+}
+.component_transition-enter-active::before {
+  transition-duration: 800ms;
+}
+.component_transition-enter-active::after {
+  transition-duration: 500ms;
+  transition-delay: 300ms;
+}
+.component_transition-enter-to::before,
+.component_transition-enter-to::after {
+  transform: scaleX(0);
+  transform-origin: right;
+}
+
+/* Loading : SPLIT*/
+.loading_transition-leave-active{
+  transition-duration: 1600ms;
+  background-color: transparent;
+  z-index: 1007;
+}
+.loading_transition-leave-active::before,
+.loading_transition-leave-active::after{
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  height: 50%;
+  transition-property: opacity, transform;
+  transition-timing-function: ease-in-out;
+}
+.loading_transition-leave-active::before{
+  background-color: #262626;
+}
+.loading_transition-leave-active::after{
+  top: 50%;
+  background-color: #262626;
+}
+
+.loading_transition-leave::before,
+.loading_transition-leave::after {
+  transform: scaleX(1);
+}
+.loading_transition-leave-active::before {
+  transition-duration: 1000ms;
+  transition-delay: 100ms;
+}
+.loading_transition-leave-active::after {
+  transition-duration: 1000ms;
+  transition-delay: 0ms;
+}
+.loading_transition-leave-to::before,
+.loading_transition-leave-to::after {
+  transform: scaleX(0);
+  transform-origin: right;
+}

@@ -1,0 +1,20 @@
+{
+  "Contact": {
+    "description": "Auto imported from components/Contact.vue"
+  },
+  "Loading": {
+    "description": "Auto imported from components/Loading.vue"
+  },
+  "Logo": {
+    "description": "Auto imported from components/Logo.vue"
+  },
+  "Menu": {
+    "description": "Auto imported from components/Menu.vue"
+  },
+  "Scrollindicator": {
+    "description": "Auto imported from components/Scrollindicator.vue"
+  },
+  "Slider": {
+    "description": "Auto imported from components/Slider.vue"
+  }
+}

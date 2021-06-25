@@ -1,0 +1,30 @@
+[
+  {
+    "name": "contact",
+    "path": "/contact",
+    "component": "Y:\\\\Logiciel\\\\Github\\\\PIXEL\\\\pages\\\\contact.vue",
+    "chunkName": "pages/contact",
+    "_name": "_3ccc684e"
+  },
+  {
+    "name": "works",
+    "path": "/works",
+    "component": "Y:\\\\Logiciel\\\\Github\\\\PIXEL\\\\pages\\\\works\\\\index.vue",
+    "chunkName": "pages/works/index",
+    "_name": "_b4e41b5c"
+  },
+  {
+    "name": "works-chateau-les-moines",
+    "path": "/works/chateau-les-moines",
+    "component": "Y:\\\\Logiciel\\\\Github\\\\PIXEL\\\\pages\\\\works\\\\chateau-les-moines.vue",
+    "chunkName": "pages/works/chateau-les-moines",
+    "_name": "_03dd5378"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "Y:\\\\Logiciel\\\\Github\\\\PIXEL\\\\pages\\\\index.vue",
+    "chunkName": "pages/index",
+    "_name": "_13423180"
+  }
+]
