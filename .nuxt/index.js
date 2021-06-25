@@ -13,8 +13,8 @@ import { createStore } from './store.js'
 
 /* Plugins */
 
-import nuxt_plugin_plugin_6c85ffda from 'nuxt_plugin_plugin_6c85ffda' // Source: .\\components\\plugin.js (mode: 'all')
-import nuxt_plugin_gsapModule_f764534a from 'nuxt_plugin_gsapModule_f764534a' // Source: .\\gsapModule.js (mode: 'all')
+import nuxt_plugin_plugin_0356c80e from 'nuxt_plugin_plugin_0356c80e' // Source: .\\components\\plugin.js (mode: 'all')
+import nuxt_plugin_gsapModule_1b1942c0 from 'nuxt_plugin_gsapModule_1b1942c0' // Source: .\\gsapModule.js (mode: 'all')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
@@ -79,7 +79,7 @@ async function createApp(ssrContext, config = {}) {
   // here we inject the router and store to all child components,
   // making them available everywhere as `this.$router` and `this.$store`.
   const app = {
-    head: {"title":"PIXEL","htmlAttrs":{"lang":"fr"},"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":""}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"},{"rel":"preconnect","href":"https:\u002F\u002Ffonts.gstatic.com"},{"rel":"stylesheet","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss2?family=Yeseva+One&display=swap"}],"script":[{"src":"https:\u002F\u002Fcdnjs.cloudflare.com\u002Fajax\u002Flibs\u002Fgsap\u002F1.20.3\u002FTweenMax.min.js"},{"src":"https:\u002F\u002Fs3-us-west-2.amazonaws.com\u002Fs.cdpn.io\u002F16327\u002FSplitText3.min.js"}],"style":[]},
+    head: {"title":"PIXEL","htmlAttrs":{"lang":"fr"},"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":""}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"},{"rel":"preconnect","href":"https:\u002F\u002Ffonts.gstatic.com"},{"rel":"stylesheet","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss2?family=Yeseva+One&display=swap"}],"script":[{"src":"https:\u002F\u002Fcdnjs.cloudflare.com\u002Fajax\u002Flibs\u002Fgsap\u002F1.20.3\u002FTweenMax.min.js"},{"src":"https:\u002F\u002Funpkg.com\u002Fsplit-type"}],"style":[]},
 
     store,
     router,
@@ -208,12 +208,12 @@ async function createApp(ssrContext, config = {}) {
   }
   // Plugin execution
 
-  if (typeof nuxt_plugin_plugin_6c85ffda === 'function') {
-    await nuxt_plugin_plugin_6c85ffda(app.context, inject)
+  if (typeof nuxt_plugin_plugin_0356c80e === 'function') {
+    await nuxt_plugin_plugin_0356c80e(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_gsapModule_f764534a === 'function') {
-    await nuxt_plugin_gsapModule_f764534a(app.context, inject)
+  if (typeof nuxt_plugin_gsapModule_1b1942c0 === 'function') {
+    await nuxt_plugin_gsapModule_1b1942c0(app.context, inject)
   }
 
   // Lock enablePreview in context
