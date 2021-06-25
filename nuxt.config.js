@@ -18,7 +18,7 @@ export default {
     ],
     script: [
       { src: 'https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js'},
-      { src: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/SplitText3.min.js'},
+      { src: 'https://unpkg.com/split-type'},
     ]
   },
 
