@@ -2,7 +2,6 @@
   <section>
     <div class="container">
       <div>
-        {{this.lol}}
         <h2 class="title">PIKS-L est une agence digitale,</br> créatrice d'expériences sur-mesure.</h2>
       </div>
     </div>
@@ -21,14 +20,13 @@
   export default {
     transition: 'fade',
     data: () => ({
-      lol: "IORE C PATOUF",
     }),
     computed: {
     },
     methods: {
       appear() {
         var t1 = this.$gsap.timeline(), mySplitText = new SplitType(".title", {type:"words,chars"}), chars = mySplitText.words;
-          t1.from(chars, {delay: 6.8, duration: 1, opacity:0, y:50, transformOrigin:"0% 50% 100",  ease:"back", stagger: 0.1}, "+=0");
+          t1.from(chars, {delay: 0.6, duration: 1, opacity:0, y:50, transformOrigin:"0% 50% 100",  ease:"back", stagger: 0.1}, "+=0");
       },
     },
     mounted() {

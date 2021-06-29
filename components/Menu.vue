@@ -19,7 +19,6 @@
   </nav>
 </template>
 <style scoped>
-
   .menu {
       position: fixed;
       height: 100px;
@@ -81,14 +80,37 @@ export default {
     appear() {
       var t1 = this.$gsap.timeline(), mySplitText = new SplitType(".menu-span", {type:"words,chars"}), chars = mySplitText.chars;
         t1.from(chars, {delay: 3, duration: 1, opacity:0, y:50, transformOrigin:"0% 50% 100",  ease:"back", stagger: 0.1}, "+=0");
+      let menu = document.querySelector(".menu-span");
+      menu.addEventListener("mouseenter", () => {
+        this.$gsap.to(".menu-span", { duration: 0.5, opacity:0.5, text: "OPEN", ease: "back", stagger: 0.1});
+      });
+      menu.addEventListener("mouseleave", () => {
+        this.$gsap.to(".menu-span", { duration: 0.2, opacity:1, text: "MENU", ease: "back", stagger: 0.1});
+      });
     },
     beforeEnter(el) {
     },
     afterEnter(el) {
+      this.toggle();
       this.content = true
+      let menu = document.querySelector(".menu-span");
+      menu.addEventListener("mouseenter", () => {
+        this.$gsap.to(".menu-span", { duration: 0.5, opacity:0.5, text: "MENU", ease: "back", stagger: 0.1});
+      });
+      menu.addEventListener("mouseleave", () => {
+        this.$gsap.to(".menu-span", { duration: 0.2, opacity:1, text: "CLOSE", ease: "back", stagger: 0.1});
+      });
     },
     beforeLeave(el) {
       this.content = false
+      this.toggle();
+      let menu = document.querySelector(".menu-span");
+      menu.addEventListener("mouseenter", () => {
+        this.$gsap.to(".menu-span", { duration: 0.5, opacity:0.5, text: "OPEN", ease: "back", stagger: 0.1});
+      });
+      menu.addEventListener("mouseleave", () => {
+        this.$gsap.to(".menu-span", { duration: 0.2, opacity:1, text: "MENU", ease: "back", stagger: 0.1});
+      });
     },
     afterLeave(el) {
     },
@@ -103,10 +125,18 @@ export default {
         this.$gsap.to("#anime1",{ attr:{ values: '0' }, duration: 0.5, ease:'Power4.easeInOut'});
         this.$gsap.to(".menu-span", {delay: 0.7, duration: 0.5, opacity:1, text: "MENU", ease: "back", stagger: 0.1});
       }
+    },
+    toggle() {
+        this.$store.dispatch('toggled')
     }
   },
   mounted() {
     this.appear();
-  }
+  },
+  computed: {
+    preloading () {
+      return this.$store.getters['toggled']
+    },
+  },
 }
 </script>

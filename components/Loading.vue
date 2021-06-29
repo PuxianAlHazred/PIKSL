@@ -58,7 +58,7 @@
     width: 100%;
   }
   .titleload{
-    font-size:100px;
+    font-size:90px;
     font-family: 'Yeseva One', cursive;
   }
   .preloader__progress {
