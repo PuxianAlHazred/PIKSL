@@ -104,7 +104,7 @@
   .preloader__items li{
     color: #FFFFFF;
     display: block;
-    font-family: Consolas, monaco, monospace;
+    font-family: 'Lexend', sans-serif;
     height: 20px;
     overflow: hidden;
     text-align:center;
@@ -134,36 +134,33 @@ export default {
         this.toggle();
         this.content = true; // Boolean du contenu = true
       // Début du chargement du component loading.vue
-
     },
     beforeEnter() {
       console.log("beforeEnter")
-      var t1 = this.$gsap.timeline(), mySplitText = new SplitType(".titleload", {type:"words,chars"}), chars = mySplitText.chars;
-        t1.from(chars, {delay: 1, duration: 0.5, opacity:0, y:-50, transformOrigin:"0% 50% 100",  ease:"power2.inOut", stagger: 0.2}, "+=0");
-        t1.to(chars, {delay: 3, duration: 0.5, opacity:0, y:-50, transformOrigin:"0% 50% 100",  ease:"power2.inOut", stagger: 0.2}, "+=0");
-      this.$gsap.fromTo(".preloader__items",
-        {opacity: 0, y: 15, ease: 'power2.inOut'},
-        {opacity: 1, y: 0, delay: 1, ease: 'power2.inOut', duration: 0.5},
-      );
-      this.$gsap.fromTo(".box-blanc",
-        {opacity: 0, height: 0, ease: 'power2.inOut'},
-        {opacity: 1, height: 300, ease: 'power2.inOut', duration: 0.5},
-      );
-      this.$gsap.fromTo(".preloader__progress__bar",
-        {opacity: 0, y: -15, ease: 'power2.inOut'},
-        {opacity: 1, y: 0, delay: 1, ease: 'power2.inOut', duration: 0.5},
-      );
       // Avant de lancer la function Enter()
     },
     enter() {
       console.log("enter")
-
-
+        this.$gsap.fromTo(".preloader__items",
+          {opacity: 0, y: 15, ease: 'power2.inOut'},
+          {opacity: 1, y: 0, delay: 1, ease: 'power2.inOut', duration: 0.5},
+        );
+        this.$gsap.fromTo(".preloader__progress__bar",
+          {opacity: 0, y: -15, ease: 'power2.inOut'},
+          {opacity: 1, y: 0, delay: 1, ease: 'power2.inOut', duration: 0.5},
+        );
+        var t1 = this.$gsap.timeline(), mySplitText = new SplitType(".titleload", {type:"words,chars"}), chars = mySplitText.chars;
+          t1.from(chars, {delay: 1, duration: 0.5, opacity:0, y:-50, transformOrigin:"0% 50% 100",  ease:"power2.inOut", stagger: 0.2}, "+=0");
+          t1.to(chars, {delay: 3, duration: 0.5, opacity:0, y:-50, transformOrigin:"0% 50% 100",  ease:"power2.inOut", stagger: 0.2}, "+=0");
+        this.$gsap.fromTo(".box-blanc",
+          {opacity: 0, height: 0, ease: 'power2.inOut'},
+          {opacity: 1, delay: 0.8, height: 300, ease: 'power2.inOut', duration: 0.5},
+        );
     },
     afterEnter() {
       // Aprés avoir lancer la function Enter()
       console.log("afterEnter")
-        this.$gsap.to(".box-blanc", {delay: 5.6, opacity: 0, ease: 'power2.inOut', width: 0, x: 10, duration: 0.5});
+        this.$gsap.to(".box-blanc", {delay: 5, opacity: 0, ease: 'power2.inOut', width: 0, x: 10, duration: 0.5});
         this.$gsap.to(".preloader__items", { opacity: 0, y: 5, ease: 'power2.inOut', duration: 0.5, delay: 5 });
         this.$gsap.to(".preloader__progress__bar", { opacity: 0, y: -5, ease: 'power2.inOut', duration: 0.5, delay: 5});
     },

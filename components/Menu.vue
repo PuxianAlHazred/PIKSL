@@ -61,6 +61,7 @@
       height: calc(100% / 4);
       min-height: 50px;
       position: relative;
+      font-family: 'Lexend', sans-serif;
   }
   .list-item a {
       display: block;

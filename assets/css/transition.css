@@ -1,6 +1,6 @@
 /* ALL : SIMPLE OPACITY*/
-.fade-enter-active, .fade-leave-active { transition: opacity .5s; }
-.fade-enter, .fade-leave-active { opacity: 0; }
+.fade-enter-active, .fade-leave-active { }
+.fade-enter, .fade-leave-active { }
 
 /* Page : SPLIT*/
 .page_transition-leave-active,
@@ -132,13 +132,17 @@
 }
 
 /* Loading : SPLIT*/
-.loading_transition-leave-active{
-  transition-duration: 1600ms;
+.loading_transition-leave-active,
+.loading_transition-enter-active {
+  transition-duration: 800ms;
   background-color: transparent;
   z-index: 1007;
+
 }
 .loading_transition-leave-active::before,
-.loading_transition-leave-active::after{
+.loading_transition-leave-active::after,
+.loading_transition-enter-active::before,
+.loading_transition-enter-active::after {
   content: "";
   position: fixed;
   top: 0;
@@ -150,25 +154,42 @@
   transition-property: opacity, transform;
   transition-timing-function: ease-in-out;
 }
-.loading_transition-leave-active::before{
+.loading_transition-leave-active::before,
+.loading_transition-enter-active::before {
   background-color: #262626;
 }
-.loading_transition-leave-active::after{
+.loading_transition-leave-active::after,
+.loading_transition-enter-active::after {
   top: 50%;
   background-color: #262626;
 }
-
+.loading_transition-enter::before,
+.loading_transition-enter::after {
+  transform: scaleX(0);
+}
+.loading_transition-enter-active::before {
+  transition-duration: 800ms;
+}
+.loading_transition-enter-active::after {
+  transition-duration: 500ms;
+  transition-delay: 300ms;
+}
+.loading_transition-enter-to::before,
+.loading_transition-enter-to::after {
+  transform: scale(1);
+  transform-origin: left;
+}
 .loading_transition-leave::before,
 .loading_transition-leave::after {
   transform: scaleX(1);
 }
 .loading_transition-leave-active::before {
-  transition-duration: 1000ms;
-  transition-delay: 100ms;
+  transition-duration: 800ms;
+  transition-delay: 300ms;
 }
 .loading_transition-leave-active::after {
-  transition-duration: 1000ms;
-  transition-delay: 0ms;
+  transition-duration: 500ms;
+  transition-delay: 300ms;
 }
 .loading_transition-leave-to::before,
 .loading_transition-leave-to::after {
