@@ -27,13 +27,13 @@
 }
 .page_transition-leave-active::before,
 .page_transition-enter-active::before {
-  background-color: #262626;
+  background-color: #FFFFFF;
 
 }
 .page_transition-leave-active::after,
 .page_transition-enter-active::after {
   top: 50%;
-  background-color: #262626;
+  background-color: #FFFFFF;
 }
 .page_transition-enter::before,
 .page_transition-enter::after {
@@ -91,12 +91,12 @@
 }
 .component_transition-enter-active::before,
 .component_transition-leave-active::before {
-  background-color: #2e2e2e;
+  background-color: #FFFFFF;
 }
 .component_transition-enter-active::after,
 .component_transition-leave-active::after {
   top: 50%;
-  background-color: #2e2e2e;
+  background-color: #FFFFFF;
 }
 .component_transition-leave::before,
 .component_transition-leave::after {
@@ -131,68 +131,4 @@
   transform-origin: right;
 }
 
-/* Loading : SPLIT*/
-.loading_transition-leave-active,
-.loading_transition-enter-active {
-  transition-duration: 800ms;
-  background-color: transparent;
-  z-index: 1007;
 
-}
-.loading_transition-leave-active::before,
-.loading_transition-leave-active::after,
-.loading_transition-enter-active::before,
-.loading_transition-enter-active::after {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 2;
-  display: block;
-  width: 100%;
-  height: 50%;
-  transition-property: opacity, transform;
-  transition-timing-function: ease-in-out;
-}
-.loading_transition-leave-active::before,
-.loading_transition-enter-active::before {
-  background-color: #262626;
-}
-.loading_transition-leave-active::after,
-.loading_transition-enter-active::after {
-  top: 50%;
-  background-color: #262626;
-}
-.loading_transition-enter::before,
-.loading_transition-enter::after {
-  transform: scaleX(0);
-}
-.loading_transition-enter-active::before {
-  transition-duration: 800ms;
-}
-.loading_transition-enter-active::after {
-  transition-duration: 500ms;
-  transition-delay: 300ms;
-}
-.loading_transition-enter-to::before,
-.loading_transition-enter-to::after {
-  transform: scale(1);
-  transform-origin: left;
-}
-.loading_transition-leave::before,
-.loading_transition-leave::after {
-  transform: scaleX(1);
-}
-.loading_transition-leave-active::before {
-  transition-duration: 800ms;
-  transition-delay: 300ms;
-}
-.loading_transition-leave-active::after {
-  transition-duration: 500ms;
-  transition-delay: 300ms;
-}
-.loading_transition-leave-to::before,
-.loading_transition-leave-to::after {
-  transform: scaleX(0);
-  transform-origin: right;
-}

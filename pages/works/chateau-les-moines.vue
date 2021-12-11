@@ -9,8 +9,39 @@
           </div>
         </div>
       </div>
+      <div class="image-container">
+          <div class="image slidein">
+            <img src="https://florianschmid.design/img/Licht-Mensch.fb5eb581.jpg">
+          </div>
+          <div class="image slidein">
+            <img src="https://florianschmid.design/img/Licht-Mensch.fb5eb581.jpg">
+          </div>
+          <div class="image slidein">
+            <img src="https://florianschmid.design/img/Licht-Mensch.fb5eb581.jpg">
+          </div>
+        </div>
+       <widget-eyes class="eyes-loading"/>
     </div>
 </template>
+<style>
+
+.image-container {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.image {
+  margin-top: 4rem;
+  width: 80%;
+}
+.image img {
+  max-width: 100%;
+  max-height: 100%;
+}
+</style>
 <script>
 export default {
   methods: {
@@ -22,6 +53,19 @@ export default {
   },
   mounted() {
       this.appear();
+      this.$gsap.utils.toArray(".slidein").forEach(anim => {
+          this.$gsap.from(anim, {
+              scrollTrigger: {
+                  start: "top bottom",
+                  end: "top center",
+                  markers: true,
+                  scrub: 1,
+                  trigger: anim
+              },
+          y: 120,
+          opacity: 0.3
+          })
+      })
   }
 }
 </script>

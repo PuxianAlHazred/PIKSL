@@ -1,30 +1,14 @@
 <template>
   <a class="contact" target="_blank" href="mailto:contact@piks-l.com">
-    <h5 class="link-mail">FREELANCE DEVELOPER</h5>
+    <h5 class="link-mail">CONTACT</h5>
   </a>
 </template>
-<style scoped>
+<style lang="postcss">
   .contact {
-      position: fixed;
-      height: 100px;
-      bottom: 50px;
-      right: 50px;
-      z-index: 1007 !important;
-      color:#CCCCCC;
-      font-weight:400;
-      text-align: right;
-      margin: 0 auto;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-decoration:none;
-      font-family: 'Yeseva One', cursive;
-
+      @apply fixed h-[100px] bottom-[50px] right-[50px] z-50 text-right mx-auto flex items-center justify-center text-white font-title font-normal no-underline;
   }
   .link-mail{
-    color:white;
-    font-size: 14px;
-    opacity:1;
+     @apply text-white text-sm opacity-100;
   }
 </style>
 <script>
@@ -38,7 +22,7 @@ export default {
           this.$gsap.to(".link-mail", { duration: 0.5, opacity:0.5, text: "CONTACT[AT]PIKS-L.FR", ease: "back", stagger: 0.1});
         });
         contact.addEventListener("mouseleave", () => {
-          this.$gsap.to(".link-mail", { duration: 0.2, opacity:1, text: "FREELANCE DEVELOPER", ease: "back", stagger: 0.1});
+          this.$gsap.to(".link-mail", { duration: 0.2, opacity:1, text: "CONTACT", ease: "back", stagger: 0.1});
         });
     }
   },

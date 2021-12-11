@@ -6,9 +6,13 @@ You can directly use them in pages and other components without the need to impo
 
 **Tip:** If a component is conditionally rendered with `v-if` and is big, it is better to use `Lazy` or `lazy-` prefix to lazy load.
 
-- `<Contact>` | `<contact>` (components/Contact.vue)
-- `<Loading>` | `<loading>` (components/Loading.vue)
-- `<Logo>` | `<logo>` (components/Logo.vue)
-- `<Menu>` | `<menu>` (components/Menu.vue)
-- `<Scrollindicator>` | `<scrollindicator>` (components/Scrollindicator.vue)
-- `<Slider>` | `<slider>` (components/Slider.vue)
+- `<UiBackground>` | `<ui-background>` (components/ui/background.vue)
+- `<UiContact>` | `<ui-contact>` (components/ui/contact.vue)
+- `<UiLoading>` | `<ui-loading>` (components/ui/loading.vue)
+- `<UiLogo>` | `<ui-logo>` (components/ui/logo.vue)
+- `<UiMenu>` | `<ui-menu>` (components/ui/menu.vue)
+- `<WidgetEyes>` | `<widget-eyes>` (components/widget/eyes.vue)
+- `<WidgetLogoTypoBig>` | `<widget-logo-typo-big>` (components/widget/logo-typo-big.vue)
+- `<WidgetLogoTypoSmall>` | `<widget-logo-typo-small>` (components/widget/logo-typo-small.vue)
+- `<WidgetScrollindicator>` | `<widget-scrollindicator>` (components/widget/scrollindicator.vue)
+- `<WidgetSlider>` | `<widget-slider>` (components/widget/slider.vue)

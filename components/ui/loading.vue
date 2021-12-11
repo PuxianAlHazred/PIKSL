@@ -7,11 +7,15 @@
     v-on:leave="leave"
     v-on:after-leave="afterLeave"
   >
-    <div v-if="preloading" class="preloader" >
+    <div v-if="preloading" class="preloader">
       <div v-if="content">
-          <h1 class="titleload">PIKSL</h1>
-          <div class="preloader__progress"><div class="preloader__progress__bar"></div></div>
-          <div class="preloader__items ">
+          <widget-logoTypoBig class="titleload z-50"/>
+
+          <div class="preloader__progress">
+            <div class="preloader__progress__bar z-50"></div>
+          </div>
+          <div class="box-blanc"></div>
+          <div class="preloader__items z-50 ">
             <ul>
               <li>[ -00%- premeditating protocols -\- ]</li>
               <li>[ -05%- hello world ! -\- ]</li>
@@ -35,92 +39,47 @@
               <li>[ -100%-  Loading finish -\- ]</li>
             </ul>
           </div>
-          <div class="box-blanc"></div>
       </div>
+
     </div>
   </transition>
 </template>
-<style>
+<style lang="postcss">
   .preloader {
-    align-items: center;
-    background:#262626;
-    color: #FFFFFF;
-    margin: 0 auto;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    z-index: 1007!important;
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-  }
-  .titleload{
-    font-size:90px;
-    font-family: 'Yeseva One', cursive;
+    @apply items-center bg-white text-black my-0 mx-auto min-h-screen flex justify-center text-center z-40 left-0 top-0 w-full;
   }
   .preloader__progress {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 5px;
-    overflow: hidden;
-    text-align: center;
-    width: 100%;
-
+    @apply fixed h-[25px] w-[300px] text-center left-2/4 -translate-x-2/4  top-2/4 -translate-y-2/4 z-50;
   }
   .preloader__progress__bar {
-    border-bottom: 5px solid black;
-    color: #FFFFFF;
-    height: 5px;
-    margin:0 auto;
-    width: 100%;
-        background:red;
+    @apply border-b-[25px] text-black h-[25px] mx-auto my-0 w-full;
     animation: ani__06 5s;
     animation-fill-mode: forwards;
     animation-iteration-count: 1;
     transform-origin: 50% 0%;
   }
   .preloader__items{
-    display: block;
-    height: 20px;
-    overflow: hidden;
-    position: relative;
-    top:20px;
-    width: calc(100vw - 400px);text-align: center;
+    @apply block h-[20px] overflow-hidden relative top-[125px] text-center;
+    width: calc(100vw - 300px);
   }
   .preloader__items ul{
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-    width: 100%;
+    @apply m-0 p-0 w-full list-none;
     animation: ani__05 5s;
+    animation-delay: 0.75s;
     animation-fill-mode: forwards;
     animation-iteration-count: step-start;
     animation-iteration-count: 1;
   }
   .preloader__items li{
-    color: #FFFFFF;
-    display: block;
-    font-family: 'Lexend', sans-serif;
-    height: 20px;
-    overflow: hidden;
-    text-align:center;
-    width: 100%;
+    @apply text-black block font-text h-5 overflow-hidden text-center w-full;
     animation-fill-mode: forwards;
     animation-iteration-count: infinite;
   }
   .box-blanc{
-    width:300px;
-    height:300px;
-    background:white;
-    margin:0 auto;
-    position:fixed;
-    left:calc(50% - 150px);
+    @apply w-full h-[300px] bg-black mx-auto my-0 fixed left-0;
+    //left:calc(50% - 150px);
     top:calc(50% - 150px);
-    mix-blend-mode: difference;
+
   }
 </style>
 <script>
@@ -133,36 +92,39 @@ export default {
       console.log("start")
         this.toggle();
         this.content = true; // Boolean du contenu = true
-      // Début du chargement du component loading.vue
+        // Début du chargement du component loading.vue
+
     },
     beforeEnter() {
       console.log("beforeEnter")
       // Avant de lancer la function Enter()
     },
     enter() {
-      console.log("enter")
         this.$gsap.fromTo(".preloader__items",
           {opacity: 0, y: 15, ease: 'power2.inOut'},
           {opacity: 1, y: 0, delay: 1, ease: 'power2.inOut', duration: 0.5},
         );
         this.$gsap.fromTo(".preloader__progress__bar",
-          {opacity: 0, y: -15, ease: 'power2.inOut'},
+          {opacity: 0, y: 0, ease: 'power2.inOut'},
           {opacity: 1, y: 0, delay: 1, ease: 'power2.inOut', duration: 0.5},
         );
-        var t1 = this.$gsap.timeline(), mySplitText = new SplitType(".titleload", {type:"words,chars"}), chars = mySplitText.chars;
-          t1.from(chars, {delay: 1, duration: 0.5, opacity:0, y:-50, transformOrigin:"0% 50% 100",  ease:"power2.inOut", stagger: 0.2}, "+=0");
-          t1.to(chars, {delay: 3, duration: 0.5, opacity:0, y:-50, transformOrigin:"0% 50% 100",  ease:"power2.inOut", stagger: 0.2}, "+=0");
+
         this.$gsap.fromTo(".box-blanc",
-          {opacity: 0, height: 0, ease: 'power2.inOut'},
-          {opacity: 1, delay: 0.8, height: 300, ease: 'power2.inOut', duration: 0.5},
+          {opacity: 0, height: 300, width: 0, ease: 'power2.inOut'},
+          {opacity: 1, delay: 0.8, width: '100%', ease: 'power2.inOut', duration: 0.5},
         );
+
     },
     afterEnter() {
       // Aprés avoir lancer la function Enter()
       console.log("afterEnter")
-        this.$gsap.to(".box-blanc", {delay: 5, opacity: 0, ease: 'power2.inOut', width: 0, x: 10, duration: 0.5});
+        this.$gsap.to(".box-blanc", {delay: 5, opacity: 1, ease: 'power2.inOut', width: 310, height: 310, right:0, y: -5, duration: 0.5});
         this.$gsap.to(".preloader__items", { opacity: 0, y: 5, ease: 'power2.inOut', duration: 0.5, delay: 5 });
-        this.$gsap.to(".preloader__progress__bar", { opacity: 0, y: -5, ease: 'power2.inOut', duration: 0.5, delay: 5});
+        this.$gsap.to(".preloader__progress__bar", { opacity: 0, y: 0, width: '0px', ease: 'power2.inOut', duration: 0.5, delay: 4.5});
+        this.$gsap.to(".preloader__progress", { opacity: 1, y: 0, width: 300, height: 300, background: '#FFFFFF',ease: 'power2.inOut', duration: 0.5, delay: 4.5});
+        this.$gsap.to(".preloader__progress", { opacity: 0, x: -150, width: 0, height: 300, background: '#FFFFFF',ease: 'power2.inOut', duration: 0.5, delay: 6.0});
+
+
     },
     finish() {
       console.log("finish")

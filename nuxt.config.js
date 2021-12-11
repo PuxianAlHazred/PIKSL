@@ -17,16 +17,25 @@ export default {
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Lexend:wght@400;600&family=Yeseva+One&display=swap' },
     ],
     script: [
+      //{ src: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'},
       { src: 'https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js'},
+      { src: 'https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js'},
       { src: 'https://unpkg.com/split-type'},
+      { src: 'https://www.piks-l.fr/js/bliss.min.js'},
+      { src: 'https://www.piks-l.fr/js/rebound.min.js'},
+
+
     ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: ['~/assets/css/style.css','~/assets/css/transition.css','~/assets/css/keyframes.css',],
-
+  tailwindcss: {
+    cssPath: '~/assets/css/tailwind.css',
+    exposeConfig: false,
+  },
   // Loading
-  loading: '~/components/Loading.vue',
+  loading: '~/components/ui/loading.vue',
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
@@ -36,7 +45,7 @@ export default {
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: ['nuxt-gsap-module'],
+  buildModules: ['nuxt-gsap-module', '@nuxtjs/tailwindcss'],
   // GSAP config: https://www.npmjs.com/package/nuxt-gsap-module
   gsap: {
     extraPlugins: {

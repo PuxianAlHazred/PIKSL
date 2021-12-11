@@ -1,0 +1,58 @@
+/* ./assets/css/tailwind.css */
+@tailwind base;
+@tailwind components;
+*,
+*::before,
+*::after {
+    @apply box-border m-0;
+}
+html {
+    @apply scrollbar-thin scrollbar-thumb-white scrollbar-track-black overflow-y-scroll text-sm box-border bg-black; 
+}
+
+@layer components {
+    /* SCROLLBAR */
+    .scrollbar-thumb-black {
+        --scrollbar-thumb: #000000 !important;
+        
+    }
+    .scrollbar-thumb-white {
+        --scrollbar-thumb: #ffffff !important;
+        
+    }
+    .scrollbar-track-black {
+        --scrollbar-track: #000000 !important;
+
+    }
+    .scrollbar-track-white {
+        --scrollbar-track: #ffffff!important;
+
+    }
+    .scrollbar-thin {
+        --scrollbar-track: initial;
+        --scrollbar-thumb: initial;
+        scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+        overflow: overlay;
+    }
+    .scrollbar-thin.overflow-x-hidden {
+        overflow-x: hidden;
+    }
+    .scrollbar-thin.overflow-y-hidden {
+        overflow-y: hidden;
+    }
+    .scrollbar-thin::-webkit-scrollbar-track {
+        background-color: var(--scrollbar-track);
+    }
+    .scrollbar-thin::-webkit-scrollbar-thumb {
+        background-color: var(--scrollbar-thumb);
+    }
+    .scrollbar-thin {
+        scrollbar-width: thin;
+    }
+    .scrollbar-thin::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+@tailwind utilities;

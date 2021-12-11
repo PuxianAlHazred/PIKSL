@@ -5,27 +5,16 @@
     </div>
   </div>
 </template>
-<style scoped>
-
+<style lang="postcss">
   .scrollbar-indicator {
-    position: fixed;
-    top: 50%;
-    right: 95px;
-    transform: translateY(-50%);
+    @apply fixed top-1/2 right-[95px] -translate-y-2/4 w-[5px] h-[100px] bg-black;
     z-index: 1009 !important;
-    width: 5px;
-    background-color: #000000;
-    height: 100px;
   }
   .scrollbar-container {
-    width: 5px;
-    height: 100%;
-    background: #000000;
+    @apply w-[5px] h-full bg-black;
   }
   .scrollbar-progress {
-    height: 5px;
-    background: #FFF;
-    width: 5px;
+    @apply h-[5px] bg-white w-[5px];
   }
 </style>
 <script>

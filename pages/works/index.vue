@@ -1,6 +1,6 @@
 <template>
   <section>
     <h2 class="title">WORKS</h2>
-    <Slider />
+    <widget-slider />
   </section>
 </template>

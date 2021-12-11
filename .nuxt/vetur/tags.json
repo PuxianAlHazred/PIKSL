@@ -1,20 +1,32 @@
 {
-  "Contact": {
-    "description": "Auto imported from components/Contact.vue"
+  "UiBackground": {
+    "description": "Auto imported from components/ui/background.vue"
   },
-  "Loading": {
-    "description": "Auto imported from components/Loading.vue"
+  "UiContact": {
+    "description": "Auto imported from components/ui/contact.vue"
   },
-  "Logo": {
-    "description": "Auto imported from components/Logo.vue"
+  "UiLoading": {
+    "description": "Auto imported from components/ui/loading.vue"
   },
-  "Menu": {
-    "description": "Auto imported from components/Menu.vue"
+  "UiLogo": {
+    "description": "Auto imported from components/ui/logo.vue"
   },
-  "Scrollindicator": {
-    "description": "Auto imported from components/Scrollindicator.vue"
+  "UiMenu": {
+    "description": "Auto imported from components/ui/menu.vue"
   },
-  "Slider": {
-    "description": "Auto imported from components/Slider.vue"
+  "WidgetEyes": {
+    "description": "Auto imported from components/widget/eyes.vue"
+  },
+  "WidgetLogoTypoBig": {
+    "description": "Auto imported from components/widget/logo-typo-big.vue"
+  },
+  "WidgetLogoTypoSmall": {
+    "description": "Auto imported from components/widget/logo-typo-small.vue"
+  },
+  "WidgetScrollindicator": {
+    "description": "Auto imported from components/widget/scrollindicator.vue"
+  },
+  "WidgetSlider": {
+    "description": "Auto imported from components/widget/slider.vue"
   }
 }

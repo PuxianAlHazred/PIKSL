@@ -1,14 +1,42 @@
 <template>
-  <div class="logo">
-    <audio id="mySoundClip">
-    	<source src="/sounds/Fake-Vinyl-1.mp3"></source>
-    </audio>
+  <div id="logo" class="logo group">
+    <audio id="mySoundClip" src="/sounds/Fake-Vinyl-1.mp3" />
+    <!--
     <img class="img-logo" src="/images/monoeil-noir.gif" />
+    -->
+    
     <NuxtLink to="/">
-      <svg class="svg-logo" view-box="0 0 100 100" width="100" height="100">
+      <widget-logoTypoSmall class="title-logo"/>
+
+      <widget-eyes :coloris="coloris" class="eyes-loading"/>
+
+      <svg class="svg-logo group-hover:animate-pulse" view-box="0 0 100 100" width="100" height="100">
       </svg>
       <svg class="svg-filter">
         <defs>
+          <filter id="teal-white" x="0%" y="0%" width="100%" height="100%" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <feColorMatrix type="matrix" values=".33 .33 .33 0 0
+                      .33 .33 .33 0 0
+                      .33 .33 .33 0 0
+                      0 0 0 1 0" in="SourceGraphic" result="colormatrix"/>
+            <feComponentTransfer in="colormatrix" result="componentTransfer">
+                  <feFuncR type="table" tableValues="1 0.98"/>
+              <feFuncG type="table" tableValues="1 0.96"/>
+              <feFuncB type="table" tableValues="1 0.6"/>
+              <feFuncA type="table" tableValues="0 1"/>
+              </feComponentTransfer>
+            <feBlend mode="color" in="componentTransfer" in2="SourceGraphic" result="blend"/>
+          </filter>
+          <filter id="broken">
+            <feTurbulence id="anime3" type="turbulence" baseFrequency="2 8" numOctaves="2" seed="2" stitchTiles="stitch" result="turbulence"/>
+            <feColorMatrix type="saturate" values="30" in="turbulence" result="colormatrix"/>
+            <feColorMatrix type="matrix" values="1 0 0 0 0
+          0 1 0 0 0
+          0 0 1 0 0
+          0 0 0 150 -15" in="colormatrix" result="colormatrix1"/>
+            <feComposite in="SourceGraphic" in2="colormatrix1" operator="in" result="composite"/>
+            <feDisplacementMap in="SourceGraphic" in2="colormatrix1" scale="15" xChannelSelector="R" yChannelSelector="A" result="displacementMap"/>
+          </filter>
           <filter id="distord">
             <feTurbulence id="anime2" baseFrequency="0.050" type="fractalNoise"/>
             <feColorMatrix type="hueRotate" values="0">
@@ -43,7 +71,7 @@
             <feComposite operator="over" in="main"/>
           </filter>
           <filter id="distorded">
-            <feTurbulence  baseFrequency="0.050" type="fractalNoise"/>
+            <feTurbulence  baseFrequency="0.0400" type="fractalNoise"/>
             <feColorMatrix type="hueRotate" values="0">
               <animate
                 attributeName="values"
@@ -55,11 +83,11 @@
               in="SourceGraphic"
               xChannelSelector="R"
               yChannelSelector="B"
-              scale="50" >
+              scale="10" >
               <animate
 
                 attributeName="scale"
-                values="50"
+                values="6"
                 dur="10s"
 
                 repeatCount="indefinite"/>
@@ -77,89 +105,74 @@
             <feComposite operator="over" in="main"/>
           </filter>
           <filter id="pixelate">
-            <feGaussianBlur stdDeviation="2" in="SourceGraphic" result="smoothed" />
+            <feGaussianBlur stdDeviation="10" in="SourceGraphic" result="smoothed" />
             <feImage width="5" height="5" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAIAAAACDbGyAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAWSURBVAgdY1ywgOEDAwKxgJhIgFQ+AP/vCNK2s+8LAAAAAElFTkSuQmCC" result="displacement-map" />
             <feTile in="displacement-map" result="pixelate-map" />
-            <feDisplacementMap in="smoothed" in2="pixelate-map" xChannelSelector="R" yChannelSelector="G" scale="50" result="pre-final"/>
+            <feDisplacementMap in="smoothed" in2="pixelate-map" xChannelSelector="R" yChannelSelector="G" scale="1" result="pre-final"/>
             <feComposite operator="in" in2="SourceGraphic"/>
           </filter>
         </defs>
       </svg>
-      <h1 class="title-logo">PIKSL</h1>
     </NuxtLink>
+
   </div>
 </template>
-<style scoped>
-  .svg-filter{
-    visibility:hidden;
-    width: 0px;
-    height: 0px;
-  }
-  .logo {
-    width: 100px;
-    top: 50px;
-    left: 50px;
-    position: fixed;
-    height: 100px;
-    z-index:1008!important;
-  }
+<style lang="postcss">
+  /* FILTER */
+    .svg-filter{@apply invisible w-0 h-0}
+    .filter-broken{filter: url("#broken") saturate(0);}
+    .filter-distord{filter: url("#distord") saturate(0);}
+    .filter-pixelate{filter: url("#pixelate") saturate(0);}
+  /* LOGO */
+    .logo {
+      @apply w-[100px] top-[50px] left-[50px] fixed h-[100px] z-50;
+    }
     .svg-logo {
-      top: 0%;
+      @apply top-0 relative mix-blend-difference;
       filter: url("#distord") saturate(0);
-      position: relative;
-      mix-blend-mode: difference;
     }
     .svg-logo path {
-      filter: drop-shadow( 5px 5px 5px rgba(0, 0, 0, 1));
+      @apply drop-shadow-sm
     }
-  .logo h1{
-    margin: 0;
-    color: #FFFFFF;
-    font-size: 32px;
-    mix-blend-mode: difference;
-    text-align: center;
-    line-height: 100px;
-    top: 30px;
-    transition: 1s ease all;
-    position: absolute;
-    width: 100px;
-    font-family: 'Yeseva One', cursive;
-  }
-  .logo img {
-    position: absolute;
-    top: 0;
-    margin: 25px;
-    text-align: center;
-    filter: url("#distord") saturate(0);
-    opacity:0;
-    border-radius: 50%;
-  }
-  .logo a {
-    text-decoration:none;
-  }
+    .logo h1{
+      @apply m-0 text-white text-3xl mix-blend-difference text-center leading-[100px] top-8 transition-all duration-1000 w-[100px];
+      font-family: 'Yeseva One', cursive;
+    }
+    .logo img {
+      @apply absolute top-0 m-[25px] text-center opacity-0 rounded-full;
+      filter: url("#distord") saturate(0);
+    }
+    .logo a {
+      text-decoration:none;
+    }
 </style>
 <script>
 export default {
+  data: () => ({
+    coloris: 'rgba(0,0,0,1)',
+  }),
   methods: {
+
     appear() {
       this.$gsap.from("#anime1",{ attr:{ values: '666' }, duration: 5, ease:'Power4.easeInOut'});
-      var t1 = this.$gsap.timeline(), mySplitText = new SplitType(".title-logo", {type:"words,chars"}), chars = mySplitText.chars;
-        t1.from(chars, {delay: 6.4, duration: 1, opacity:0, y:50, transformOrigin:"0% 50% 100",  ease:"back", stagger: 0.1}, "+=0");
-        t1.to(".img-logo", {delay: 0.2, duration: 1, opacity:1});
+      this.$gsap.from(".title-logo", {delay: 6.4, duration: 1, opacity:0, y:50, transformOrigin:"0% 50% 100",  ease:"back", stagger: 0.1}, "+=0");
+      this.$gsap.to(".img-logo", {delay: 0.2, duration: 1, opacity:1});
     },
     hover(){
-      var audio = document.querySelector("#mySoundClip");
-      var t2 = this.$gsap.timeline({ paused:true });
-        t2.to("#anime1",{ attr:{ values: '666' }, duration: 0.5, ease:'Power4.easeInOut'});
-      let logo = document.querySelector(".logo");
-      logo.addEventListener("mouseenter", () => {
-        t2.play();
-        audio.play();
-      });
-      logo.addEventListener("mouseleave", () => {
-        t2.reverse();
-        audio.pause();
-      });
+      const audio = document.querySelector("#mySoundClip");
+      const t2 = this.$gsap.timeline({ paused:true });
+          t2.to("#anime1",{ attr:{ values: '666' }, duration: 0.5, ease:'Power4.easeInOut'});
+      const logo = document.querySelector(".logo");
+          logo.addEventListener("mouseenter", () => {
+            t2.play();
+            audio.play();
+            this.coloris = 'rgba(255,0,0,1)'
+          });
+          logo.addEventListener("mouseleave", () => {
+            t2.reverse();
+            audio.pause();
+            this.coloris = 'rgba(0,0,0,1)'
+          });
     },
     logo() {
       "use strict";
@@ -271,8 +284,6 @@ export default {
       });
       requestAnimationFrame(Tick);
     }
-  },
-  created() {
   },
   mounted() {
     if(this.$store.state.preloading === false) {

@@ -1,68 +1,78 @@
-<template>
-  <div>
-    <Logo />
-    <Menu />
-    <Scrollindicator />
-    <Contact />
+<template >
+  <div >
+    <ui-background />
 
-      <Nuxt v-if="!this.$store.state.preloading" />
+    <ui-logo />
+    <ui-menu />
+    <widget-scrollindicator />
+    <ui-contact />
+    
 
+    <Nuxt v-if="!this.$store.state.preloading" />
   </div>
 </template>
 
-<style>
-  html {
-    scroll-snap-type: y mandatory;
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    word-spacing: 1px;
-    -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    box-sizing: border-box;
-    background:#000000;
-    overflow: auto;
+<style lang="postcss">
+
+  /* Loading : SPLIT*/
+  .loading_transition-leave-active,
+  .loading_transition-enter-active {
+    @apply duration-[800ms] bg-transparent z-50;
   }
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-    margin: 0;
+  .loading_transition-leave-active::before,
+  .loading_transition-leave-active::after,
+  .loading_transition-enter-active::before,
+  .loading_transition-enter-active::after {
+    @apply content-[""] fixed top-0 left-0 z-10 block w-full h-1/2;
+    transition-property: opacity, transform;
+    transition-timing-function: ease-in-out;
   }
-  .container {
-    padding: 0 200px;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    scroll-snap-align: center;
+  .loading_transition-leave-active::before,
+  .loading_transition-enter-active::before {
+    @apply bg-white;
   }
-  .title {
-    display: block;
-    font-weight: 600;
-    font-size: 36px;
-    color: #FFFFFF;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    font-family: 'Yeseva One', cursive;
+  .loading_transition-leave-active::after,
+  .loading_transition-enter-active::after {
+    @apply bg-white top-1/2;
   }
-  .sub-title {
-    font-weight: 600;
-    font-size: 16px;
-    color: #FFFFFF;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+  .loading_transition-enter::before,
+  .loading_transition-enter::after {
+    @apply scale-x-0;
+  }
+  .loading_transition-enter-active::before {
+    @apply duration-[800ms];
+  }
+  .loading_transition-enter-active::after {
+    @apply duration-[500ms] delay-300;
+  }
+  .loading_transition-enter-to::before,
+  .loading_transition-enter-to::after {
+    @apply scale-100 origin-left;
+  }
+  .loading_transition-leave::before,
+  .loading_transition-leave::after {
+    @apply scale-100;
+  }
+  .loading_transition-leave-active::before {
+    @apply duration-[800ms];
+  }
+  .loading_transition-leave-active::after {
+    @apply duration-[500ms] delay-300;
+  }
+  .loading_transition-leave-to::before,
+  .loading_transition-leave-to::after {
+    @apply scale-x-0 origin-right;
   }
 </style>
 <script>
   export default {
     mounted() {
+
       this.$nextTick(() => {
         this.$nuxt.$loading.start()
         setTimeout(() => this.$nuxt.$loading.finish(), 6400)
       })
-    }
+    }, 
+
   }
 </script>

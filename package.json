@@ -15,6 +15,10 @@
     "nuxt": "^2.15.3"
   },
   "devDependencies": {
-    "nuxt-gsap-module": "^1.3.1"
+    "@nuxtjs/tailwindcss": "^4.2.1",
+    "autoprefixer": "^10.4.0",
+    "nuxt-gsap-module": "^1.3.1",
+    "postcss": "^8.4.4",
+    "tailwindcss": "^2.2.19"
   }
 }

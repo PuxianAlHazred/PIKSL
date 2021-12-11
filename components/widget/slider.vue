@@ -1,29 +1,30 @@
 <template>
-    <div class="container noise">
+    <div class="content noise">
       <div class="slider-controls">
         <div data-slide="0" class="active">T1</div>
         <div data-slide="1">T2</div>
         <div data-slide="2">T3</div>
       </div>
       <div class="slider">
+        
         <div class="mask-slide"></div>
 
         <div class="slide first" style="background-image:url(/images/works25.jpg);">
-          <div class="container">
+          <div class="content">
             <NuxtLink to="/works/chateau-les-moines/">
               <h3 class="title">TITRE DU PROJET 1</h3>
             </NuxtLink>
           </div>
         </div>
         <div class="slide" style="background-image:url(/images/works24.jpg);">
-          <div class="container">
+          <div class="content">
             <NuxtLink to="/works/chateau-les-moines/">
               <h3 class="title">TITRE DU PROJET 2</h3>
             </NuxtLink>
           </div>
          </div>
         <div class="slide" style="background-image:url(/images/works25.jpg);">
-          <div class="container">
+          <div class="content">
             <NuxtLink to="/works/chateau-les-moines/">
               <h3 class="title">TITRE DU PROJET 3</h3>
             </NuxtLink>
@@ -165,7 +166,8 @@
               width: '100%',
               ease: Power4.easeInOut },
             '-=1');
-          }}
+          }
+        }
         const horizonSlider = new Slider();
       },
       appear() {

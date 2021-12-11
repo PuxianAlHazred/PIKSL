@@ -18,56 +18,33 @@
     </transition>
   </nav>
 </template>
-<style scoped>
+<style lang="postcss">
   .menu {
-      position: fixed;
-      height: 100px;
-      width: 100px;
-      top: 50px;
-      right: 50px;
+      @apply fixed h-[100px] w-[100px] top-[50px] right-[50px] ;
       z-index: 1007 !important;
   }
   .menu-span {
-    font-family: 'Yeseva One', cursive;
-    z-index: 1009 !important;
-    color:white;
-    font-size: 25px;
-
-    text-align: center;
-    line-height: 100px;
-    position: absolute;
-    width: 100px;
-    cursor:pointer;
+      @apply font-title text-white text-center absolute w-[100px] cursor-pointer;
+      z-index: 1009 !important;
+      font-size: 25px;
+      line-height: 100px;
   }
-    .menu-span.close { mix-blend-mode: difference;}
+  .menu-span.close { 
+    @apply text-white mix-blend-difference;
+  }
+  .menu-span.open { 
+    @apply text-black ;
+  }
   .list {
-    background: #262626;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    z-index: 1006 !important;
-    padding: 0 200px;
-    min-height: 100vh;
-    display: inline-flex;
-    justify-content: center;
-    text-align: center;
-    flex-direction: column;
+      @apply fixed top-0 left-0 w-screen min-h-screen px-[200px] text-center inline-flex justify-center flex-col bg-white;
+
+      z-index: 1006 !important;
   }
   .list-item {
-      display: block;
-      height: 25%;
-      height: calc(100% / 4);
-      min-height: 50px;
-      position: relative;
-      font-family: 'Lexend', sans-serif;
+      @apply block h-1/4 min-h-[50px] relative font-text;
   }
   .list-item a {
-      display: block;
-      position: relative;
-      color: #FFF;
-      text-decoration: none;
-      overflow: hidden;
+      @apply relative block text-black overflow-hidden no-underline ;
   }
 </style>
 <script>
@@ -80,13 +57,13 @@ export default {
     appear() {
       var t1 = this.$gsap.timeline(), mySplitText = new SplitType(".menu-span", {type:"words,chars"}), chars = mySplitText.chars;
         t1.from(chars, {delay: 3, duration: 1, opacity:0, y:50, transformOrigin:"0% 50% 100",  ease:"back", stagger: 0.1}, "+=0");
-      let menu = document.querySelector(".menu-span");
-      menu.addEventListener("mouseenter", () => {
-        this.$gsap.to(".menu-span", { duration: 0.5, opacity:0.5, text: "OPEN", ease: "back", stagger: 0.1});
-      });
-      menu.addEventListener("mouseleave", () => {
-        this.$gsap.to(".menu-span", { duration: 0.2, opacity:1, text: "MENU", ease: "back", stagger: 0.1});
-      });
+        let menu = document.querySelector(".menu-span");
+        menu.addEventListener("mouseenter", () => {
+          this.$gsap.to(".menu-span", { duration: 0.5, opacity:0.5, text: "OPEN", ease: "back", stagger: 0.1});
+        });
+        menu.addEventListener("mouseleave", () => {
+          this.$gsap.to(".menu-span", { duration: 0.2, opacity:1, text: "MENU", ease: "back", stagger: 0.1});
+        });
     },
     beforeEnter(el) {
     },

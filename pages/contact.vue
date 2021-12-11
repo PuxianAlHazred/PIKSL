@@ -10,6 +10,7 @@
 </template>
 <script>
   export default {
+    transition: 'page_transition',
     data: () => ({
     }),
     computed: {

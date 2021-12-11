@@ -3,28 +3,24 @@
     "name": "contact",
     "path": "/contact",
     "component": "Y:\\\\Logiciel\\\\Github\\\\PIKSL\\\\pages\\\\contact.vue",
-    "chunkName": "pages/contact",
-    "_name": "_58d0569a"
+    "chunkName": "pages/contact"
   },
   {
     "name": "works",
     "path": "/works",
     "component": "Y:\\\\Logiciel\\\\Github\\\\PIKSL\\\\pages\\\\works\\\\index.vue",
-    "chunkName": "pages/works/index",
-    "_name": "_e54105e6"
+    "chunkName": "pages/works/index"
   },
   {
     "name": "works-chateau-les-moines",
     "path": "/works/chateau-les-moines",
     "component": "Y:\\\\Logiciel\\\\Github\\\\PIKSL\\\\pages\\\\works\\\\chateau-les-moines.vue",
-    "chunkName": "pages/works/chateau-les-moines",
-    "_name": "_c4db592e"
+    "chunkName": "pages/works/chateau-les-moines"
   },
   {
     "name": "index",
     "path": "/",
     "component": "Y:\\\\Logiciel\\\\Github\\\\PIKSL\\\\pages\\\\index.vue",
-    "chunkName": "pages/index",
-    "_name": "_1a577325"
+    "chunkName": "pages/index"
   }
 ]
