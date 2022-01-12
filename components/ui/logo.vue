@@ -1,6 +1,6 @@
 <template>
   <div id="logo" class="logo group">
-    <audio id="mySoundClip" src="/sounds/Fake-Vinyl-1.mp3" />
+    <audio id="sound3" volume="0" :src="require(`~/assets/ui/2.ogg`).default" />
     <!--
     <img class="img-logo" src="/images/monoeil-noir.gif" />
     -->
@@ -8,7 +8,6 @@
     <NuxtLink to="/">
       <widget-logoTypoSmall class="title-logo"/>
 
-      <widget-eyes :coloris="coloris" class="eyes-loading"/>
 
       <svg class="svg-logo group-hover:animate-pulse" view-box="0 0 100 100" width="100" height="100">
       </svg>
@@ -159,20 +158,27 @@ export default {
       this.$gsap.to(".img-logo", {delay: 0.2, duration: 1, opacity:1});
     },
     hover(){
-      const audio = document.querySelector("#mySoundClip");
+      const audio = document.querySelector("#sound3");
+      audio.volume = 0;
+      audio.loop = true;
       const t2 = this.$gsap.timeline({ paused:true });
           t2.to("#anime1",{ attr:{ values: '666' }, duration: 0.5, ease:'Power4.easeInOut'});
       const logo = document.querySelector(".logo");
+
           logo.addEventListener("mouseenter", () => {
             t2.play();
             audio.play();
+            this.$gsap.to(audio, 1, {volume:0.5} );
             this.coloris = 'rgba(255,0,0,1)'
           });
           logo.addEventListener("mouseleave", () => {
             t2.reverse();
-            audio.pause();
+            this.$gsap.to(audio, 1, {volume:0 , onComplete:pauseSound});
             this.coloris = 'rgba(0,0,0,1)'
           });
+          function pauseSound(){
+            audio.pause();
+          }
     },
     logo() {
       "use strict";

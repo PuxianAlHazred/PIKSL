@@ -1,5 +1,6 @@
 <template>
   <div class="scrollbar-indicator ">
+
     <div class="scrollbar-container">
       <div class="scrollbar-progress" id="indicator"></div>
     </div>
@@ -7,7 +8,7 @@
 </template>
 <style lang="postcss">
   .scrollbar-indicator {
-    @apply fixed top-1/2 right-[95px] -translate-y-2/4 w-[5px] h-[100px] bg-black;
+    @apply fixed top-1/2 left-[97.5px] -translate-y-2/4 w-[5px] h-[150px] bg-white;
     z-index: 1009 !important;
   }
   .scrollbar-container {

@@ -1,13 +1,12 @@
 <template >
   <div >
-    <ui-background />
-
+    <ui-backgroundTest />
     <ui-logo />
+    <h2 class="sub-title text-white">Studio web multisupport spécialisé dans la création d'expérience sur-mesure.</h2>
+    <widget-eyes :coloris="coloris" class="eyes-loading z-50"/>
     <ui-menu />
     <widget-scrollindicator />
     <ui-contact />
-    
-
     <Nuxt v-if="!this.$store.state.preloading" />
   </div>
 </template>
@@ -66,6 +65,9 @@
 </style>
 <script>
   export default {
+      data: () => ({
+    coloris: 'rgba(0,0,0,1)',
+  }),
     mounted() {
 
       this.$nextTick(() => {

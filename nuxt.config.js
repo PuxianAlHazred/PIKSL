@@ -18,13 +18,11 @@ export default {
     ],
     script: [
       //{ src: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'},
-      { src: 'https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js'},
+      { src: 'https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js'},
       { src: 'https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js'},
       { src: 'https://unpkg.com/split-type'},
       { src: 'https://www.piks-l.fr/js/bliss.min.js'},
       { src: 'https://www.piks-l.fr/js/rebound.min.js'},
-
-
     ]
   },
 
@@ -71,5 +69,14 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    extend(config, ctx) {
+      config.module.rules.push({
+        test: /\.(ogg|mp3|wav|mpe?g)$/i,
+        loader: 'file-loader',
+        options: {
+          name: '[path][name].[ext]'
+        }
+      })
+    },
   }
 }

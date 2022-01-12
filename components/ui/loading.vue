@@ -142,12 +142,12 @@ export default {
       console.log("afterLeave")
     },
     toggle() {
-        this.$store.dispatch('toggled')
+        this.$store.dispatch('preloading')
     }
   },
   computed: {
     preloading () {
-      return this.$store.getters['toggled']
+      return this.$store.getters['preloading']
     },
   },
 }

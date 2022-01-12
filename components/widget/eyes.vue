@@ -11,7 +11,7 @@
 		filter:invert(0%)!important;
   	}
   	.portfolio-eyes {
-	  	@apply mt-[20px] h-[50px] absolute w-[100px];
+		@apply fixed top-1/2 left-[50px] -translate-y-2/4 w-[100px] h-[50px] ;
       	z-index:1010!important;
   	}
   	.portfolio-eyes > canvas {

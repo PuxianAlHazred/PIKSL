@@ -1,16 +1,17 @@
 <template>
   <nav class="menu ">
-    <h3 v-on:click="toggleMenu" class="menu-span" :class="{'open': menu, 'close': !menu}">MENU</h3>
-    <transition name="page_transition" mode="in-out" v-on:before-enter="beforeEnter" v-on:after-enter="afterEnter" v-on:before-leave="beforeLeave" v-on:after-leave="afterLeave">
-      <div v-show="menu">
+    <audio id="sound4" volume="0" :src="require(`~/assets/ui/4.ogg`).default" />
+    <h3 v-on:click="toggleMenu()" class="menu-span" :class="{'open': this.$store.state.menu, 'close': !this.$store.state.menu}">MENU</h3>
+    <transition name="page_transition" mode="in-out" v-on:before-enter="beforeEnter()" v-on:after-enter="afterEnter()" v-on:before-leave="beforeLeave()" v-on:after-leave="afterLeave()">
+      <div v-show="this.$store.state.menu">
         <ul v-show="content" class="list">
-            <li class="list-item" v-on:click="toggleMenu">
+            <li class="list-item" v-on:click="toggleMenu()">
               <NuxtLink to="/">HOME</NuxtLink>
             </li>
-            <li class="list-item" v-on:click="toggleMenu">
+            <li class="list-item" v-on:click="toggleMenu()">
               <NuxtLink to="/works">WORKS</NuxtLink>
             </li>
-            <li class="list-item" v-on:click="toggleMenu">
+            <li class="list-item" v-on:click="toggleMenu()">
               <NuxtLink to="/contact">CONTACT</NuxtLink>
             </li>
         </ul>
@@ -20,7 +21,7 @@
 </template>
 <style lang="postcss">
   .menu {
-      @apply fixed h-[100px] w-[100px] top-[50px] right-[50px] ;
+      @apply fixed h-[100px] w-[100px] bottom-[50px] left-[50px] ;
       z-index: 1007 !important;
   }
   .menu-span {
@@ -48,10 +49,11 @@
   }
 </style>
 <script>
+import { mapActions } from 'vuex'
 export default {
   data: () => ({
-    menu: false,
     content: false,
+    sound: false,
   }),
   methods: {
     appear() {
@@ -67,9 +69,34 @@ export default {
     },
     beforeEnter(el) {
     },
+    async sound4() {
+      console.groupCollapsed('Son menu')
+        const snd = document.querySelector("#sound4");
+        snd.volume = 0.5;
+        snd.loop = true;
+        if( this.sound === true ) { 
+          snd.play()
+          this.$gsap.to(snd, 1, {volume:0.5} );
+          console.log('Sound 4', this.sound)
+        } else {
+
+          this.$gsap.to(snd, 1, {volume:0 , onComplete:pauseSound});
+
+          console.log('Sound 4', this.sound)
+        }
+          function pauseSound(){
+            audio.pause();
+          }
+      console.groupEnd()
+    },
     afterEnter(el) {
-      this.toggle();
       this.content = true
+      if( this.$store.state.audio ) {
+        this.sound = true
+        this.sound4()
+      } else {
+        this.sound = false
+      }
       let menu = document.querySelector(".menu-span");
       menu.addEventListener("mouseenter", () => {
         this.$gsap.to(".menu-span", { duration: 0.5, opacity:0.5, text: "MENU", ease: "back", stagger: 0.1});
@@ -80,7 +107,13 @@ export default {
     },
     beforeLeave(el) {
       this.content = false
-      this.toggle();
+      if( this.$store.state.audio ) {
+        this.sound = false
+        this.sound4()
+      } else {
+        this.sound = false
+      }
+
       let menu = document.querySelector(".menu-span");
       menu.addEventListener("mouseenter", () => {
         this.$gsap.to(".menu-span", { duration: 0.5, opacity:0.5, text: "OPEN", ease: "back", stagger: 0.1});
@@ -92,8 +125,8 @@ export default {
     afterLeave(el) {
     },
     toggleMenu() {
-      this.menu = !this.menu
-      if(this.menu === true) {
+      this.$store.dispatch('menu')
+      if(this.$store.state.menu === true) {
         console.log("true")
         this.$gsap.to(".menu-span", {delay: 0.7, duration: 0.5, opacity:1, text: "CLOSE", ease: "back", stagger: 0.1});
         this.$gsap.to("#anime1",{ attr:{ values: '666' }, duration: 0.5, ease:'Power4.easeInOut'});
@@ -103,17 +136,10 @@ export default {
         this.$gsap.to(".menu-span", {delay: 0.7, duration: 0.5, opacity:1, text: "MENU", ease: "back", stagger: 0.1});
       }
     },
-    toggle() {
-        this.$store.dispatch('toggled')
-    }
+
   },
   mounted() {
     this.appear();
-  },
-  computed: {
-    preloading () {
-      return this.$store.getters['toggled']
-    },
   },
 }
 </script>

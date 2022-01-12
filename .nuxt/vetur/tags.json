@@ -1,19 +1,4 @@
 {
-  "UiBackground": {
-    "description": "Auto imported from components/ui/background.vue"
-  },
-  "UiContact": {
-    "description": "Auto imported from components/ui/contact.vue"
-  },
-  "UiLoading": {
-    "description": "Auto imported from components/ui/loading.vue"
-  },
-  "UiLogo": {
-    "description": "Auto imported from components/ui/logo.vue"
-  },
-  "UiMenu": {
-    "description": "Auto imported from components/ui/menu.vue"
-  },
   "WidgetEyes": {
     "description": "Auto imported from components/widget/eyes.vue"
   },
@@ -28,5 +13,23 @@
   },
   "WidgetSlider": {
     "description": "Auto imported from components/widget/slider.vue"
+  },
+  "UiBackgroundTest": {
+    "description": "Auto imported from components/ui/background-test.vue"
+  },
+  "UiBackground": {
+    "description": "Auto imported from components/ui/background.vue"
+  },
+  "UiContact": {
+    "description": "Auto imported from components/ui/contact.vue"
+  },
+  "UiLoading": {
+    "description": "Auto imported from components/ui/loading.vue"
+  },
+  "UiLogo": {
+    "description": "Auto imported from components/ui/logo.vue"
+  },
+  "UiMenu": {
+    "description": "Auto imported from components/ui/menu.vue"
   }
 }

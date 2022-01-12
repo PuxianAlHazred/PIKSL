@@ -1,36 +1,55 @@
 <template>
   <section class="relative" id="contenteru">
-
-    
-    <div class="content">
-        <h1 class="title text-4xl mr-5 ">PIKS-L</h1>
-        <h2 class="sub-title ">Studio web multisupport <br> spécialisé dans la création d'expérience sur-mesure.</h2>
-    </div>
-    
-    <div class="content bg-black">
-        <span class="sub-title text-right">2021 <br>Site Internet, WPA</span>
-        <nuxt-link to="/contact"><h3 class="title text-5xl ml-5 ">GREENFUZ</h3></nuxt-link>
-    </div>
-    <div class="content">
-        <span class="sub-title text-right">Contact par mail<br>CONTACT@PIKS-L.FR</span>
-        <nuxt-link to="/contact"><h3 class="title text-4xl ml-5 ">DISPONIBLE DÉS MAINTENANT !</h3></nuxt-link>
+    <div class="content-hero h-screen ">
+        <h1 class="title text-white">PIKSL</h1>
     </div>
   </section>
 </template>
 <style lang="postcss">
+  #container { 
+  filter:url('#noise') blur(7px);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  }
+
+  #text {
+  margin: 0;
+  line-height: 2.5rem; 
+  word-break: break-all;
+  }
+
+  .filtered {
+  filter: url('#contrast');
+  height: 100%;
+  }
   .content {
-    @apply w-full py-0 min-h-screen h-screen flex col-start-1 items-center justify-center;
+    @apply w-full py-0 flex col-start-1 items-center justify-center;
+  }
+  .content-hero {
+    @apply w-full flex items-center text-center h-screen ;
+  }
+  .main-title {
+    @apply block font-semibold uppercase text-center font-title;
+    font-size:20vw;
+    line-height: 50vw;
   }
   .title {
-    @apply block leading-8 font-semibold text-white uppercase text-center font-title;
+    @apply block leading-8 font-semibold uppercase text-left font-title;
+    font-size:25vw;
   }
   .sub-title {
-    @apply font-semibold text-sm text-white uppercase ;
+    @apply font-semibold text-sm  uppercase ;
   }
 </style>
 <script>
+  import { mapActions } from 'vuex'
   export default {
     methods: {
+      ...mapActions({ 
+        sound1: 'sound1' 
+      }),
       appear() {
 
         const t1 = this.$gsap.timeline(), mySplitText = new SplitType(".sub-title", {type:"words,chars"}), chars = mySplitText.words;
@@ -38,6 +57,9 @@
       },
     },
     mounted() {
+ 
+      this.sound1()
+       
       this.appear();     
     }
   }

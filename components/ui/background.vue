@@ -1,6 +1,7 @@
 <template>
   <div class="">
-    <div id="lool" class="fixed mx-auto w-[300px] h-[300px] -translate-y-2/4 top-2/4 left-2/4 opacity-0 -translate-x-2/4 saturate-0  overflow-hidden"></div>
+    <div id="lool" class="fixed mx-auto w-[300px] h-[300px] -translate-y-2/4 top-2/4 left-2/4 opacity-0 -translate-x-2/4 saturate-0  overflow-hidden">
+    </div>
     <div class="fixed bottom-0 left-0 w-full z-50">
       <div class="flex justify-around px-5 pt-5 text-white bg-black text-center">
           <p>NB : <b>{{NB_ITE}}</b></p>
@@ -27,22 +28,20 @@
   export default {
     data() {
       return {
-        NB_ITE:14,
-        X0:1.50,
-        X1:2.50,
-        Y0:0.50,
+        NB_ITE:3,
+        X0:3,
+        X1:1.60,
+        Y0:15.90,
         Y1:1.78,
-        T0:3000,
-        T1:6000,
+        T0:6000,
+        T1:9000,
       }
     }, 
     methods: {
         appear() {
             var t1 = this.$gsap.timeline();
-                t1.to('#lool', {delay: 1, height:'300px', width:'300px',  duration: 1, opacity:1,  ease:"back", stagger: 0.1}, "+=0");
-                t1.to('#lool', {delay: 6.2, height:'100vh', width:'80%',  duration: 1, opacity:1,  ease:"back", stagger: 0.1}, "+=0");
-
-
+                t1.to('#lool', {delay: 1, height:'300px', width:'300px',  duration: 1, opacity:1,   stagger: 0.1}, "+=0");
+                t1.to('#lool', {delay: 6.2, height:'calc(100vh - 200px)', width:'calc(100vw - 200px)', duration: 1, opacity:1,  stagger: 0.1}, "+=0");
         },
         background() {
             "use strict";
@@ -74,11 +73,11 @@
 
             function iorecpatouf () {
             console.groupCollapsed("DATA")
-            console.log('NB_ITER', document.getElementById('brightness').value)
-            console.log('X0', document.getElementById('brightnessX0').value)
-            console.log('X1', document.getElementById('brightnessX1').value)
-            console.log('Y0', document.getElementById('brightnessY0').value)
-            console.log('Y1', document.getElementById('brightnessY1').value)
+                console.log('NB_ITER', document.getElementById('brightness').value)
+                console.log('X0', document.getElementById('brightnessX0').value)
+                console.log('X1', document.getElementById('brightnessX1').value)
+                console.log('Y0', document.getElementById('brightnessY0').value)
+                console.log('Y1', document.getElementById('brightnessY1').value)
             console.groupEnd()
             //-----------------------------------------------------------------------------
             // miscellaneous functions
