@@ -45,6 +45,7 @@ export default {
 
       { src: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/2666677/MyShaderChunks.js'}, 
 
+
     ]
   },
 
@@ -93,7 +94,7 @@ export default {
   build: {
     extend(config, ctx) {
       config.module.rules.push({
-        test: /\.(ogg|mp3|wav|mpe?g)$/i,
+        test: /\.(ogg|mp3|wav|obj|mpe?g)$/i,
         loader: 'file-loader',
         options: {
           name: '[path][name].[ext]'

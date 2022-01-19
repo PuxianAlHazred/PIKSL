@@ -1,7 +1,6 @@
 <template>
   <section class="relative" id="contenteru">
     <div class="content-hero h-screen ">
-        <h1 class="title text-white">PIKSL</h1>
     </div>
   </section>
 </template>
@@ -58,7 +57,7 @@
     },
     mounted() {
  
-      this.sound1()
+      //this.sound1()
        
       this.appear();     
     }

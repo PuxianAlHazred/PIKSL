@@ -9,11 +9,15 @@
   >
     <div v-if="preloading" class="preloader">
       <div v-if="content">
+          <div class='lol'>
+            <div class='lool'></div>
+          </div>
           <widget-logoTypoBig class="titleload z-50"/>
 
           <div class="preloader__progress">
             <div class="preloader__progress__bar z-50"></div>
           </div>
+
           <div class="box-blanc"></div>
           <div class="preloader__items z-50 ">
             <ul>
@@ -46,18 +50,26 @@
 </template>
 <style lang="postcss">
   .preloader {
-    @apply items-center bg-white text-black my-0 mx-auto min-h-screen flex justify-center text-center z-40 left-0 top-0 w-full;
+    @apply items-center bg-white text-gray-500 my-0 mx-auto min-h-screen flex justify-center text-center z-40 left-0 top-0 w-full;
   }
   .preloader__progress {
     @apply fixed h-[25px] w-[300px] text-center left-2/4 -translate-x-2/4  top-2/4 -translate-y-2/4 z-50;
   }
   .preloader__progress__bar {
-    @apply border-b-[25px] text-black h-[25px] mx-auto my-0 w-full;
+    @apply border-b-[25px] text-gray-500 h-[25px] mx-auto my-0 w-full;
     animation: ani__06 5s;
     animation-fill-mode: forwards;
     animation-iteration-count: 1;
     transform-origin: 50% 0%;
   }
+
+  .lol {
+    @apply fixed h-[10px] w-[300px] bg-white left-2/4 -translate-x-2/4  top-2/4 -translate-y-2/4 z-[55] mt-[25px];
+  }
+  .lool  {
+    @apply w-[300px] h-[10px] bg-gray-500 mx-auto my-0;
+  }
+
   .preloader__items{
     @apply block h-[20px] overflow-hidden relative top-[125px] text-center;
     width: calc(100vw - 300px);

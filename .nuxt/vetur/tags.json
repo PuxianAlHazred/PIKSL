@@ -1,19 +1,4 @@
 {
-  "WidgetEyes": {
-    "description": "Auto imported from components/widget/eyes.vue"
-  },
-  "WidgetLogoTypoBig": {
-    "description": "Auto imported from components/widget/logo-typo-big.vue"
-  },
-  "WidgetLogoTypoSmall": {
-    "description": "Auto imported from components/widget/logo-typo-small.vue"
-  },
-  "WidgetScrollindicator": {
-    "description": "Auto imported from components/widget/scrollindicator.vue"
-  },
-  "WidgetSlider": {
-    "description": "Auto imported from components/widget/slider.vue"
-  },
   "UiBackgroundTest": {
     "description": "Auto imported from components/ui/background-test.vue"
   },
@@ -31,5 +16,20 @@
   },
   "UiMenu": {
     "description": "Auto imported from components/ui/menu.vue"
+  },
+  "WidgetEyes": {
+    "description": "Auto imported from components/widget/eyes.vue"
+  },
+  "WidgetLogoTypoBig": {
+    "description": "Auto imported from components/widget/logo-typo-big.vue"
+  },
+  "WidgetLogoTypoSmall": {
+    "description": "Auto imported from components/widget/logo-typo-small.vue"
+  },
+  "WidgetScrollindicator": {
+    "description": "Auto imported from components/widget/scrollindicator.vue"
+  },
+  "WidgetSlider": {
+    "description": "Auto imported from components/widget/slider.vue"
   }
 }
